@@ -5,15 +5,22 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fudan.annotation.Authorization;
 import edu.fudan.annotation.CurrentUser;
+import edu.fudan.domain.Activity;
+import edu.fudan.domain.ActivityPhoto;
 import edu.fudan.domain.User;
 import edu.fudan.dto.request.*;
 import edu.fudan.dto.response.*;
+import edu.fudan.exception.ActivityNotFoundException;
+import edu.fudan.exception.ActivityPhotoNotFoundException;
 import edu.fudan.exception.ParseJsonStringException;
 import edu.fudan.model.ActivityPhotoService;
 import edu.fudan.model.ActivityService;
 import edu.fudan.model.ReviewService;
+import edu.fudan.repository.ActivityRepository;
 import org.json.JSONString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -33,14 +40,17 @@ public class ActivityController {
     private final ActivityService activityService;
     private final ReviewService reviewService;
     private final ActivityPhotoService activityPhotoService;
+    private final ActivityRepository activityRepository;
 
     @Autowired
     public ActivityController(ActivityService activityService,
                               ReviewService reviewService,
-                              ActivityPhotoService activityPhotoService) {
+                              ActivityPhotoService activityPhotoService,
+                              ActivityRepository activityRepository) {
         this.activityService = activityService;
         this.reviewService = reviewService;
         this.activityPhotoService = activityPhotoService;
+        this.activityRepository = activityRepository;
     }
 
     @GetMapping
@@ -154,5 +164,33 @@ public class ActivityController {
         return new ResponseEntity<>(activityService.createReview(currentUser, aid, createReviewReq), HttpStatus.CREATED);
     }
 
+
+    @GetMapping("{aid}/photos")
+    @Authorization
+    ResponseEntity<List<ActivityPhotoResp>> getPhotosOfActivity(@CurrentUser User currentUser,
+                                                    @PathVariable long aid) {
+        return new ResponseEntity<>(activityService.getAllPhotosOfActivity(currentUser, aid), HttpStatus.CREATED);
+    }
+
+    @PostMapping("{aid}/photos")
+    @Authorization
+    ResponseEntity<ActivityPhotoResp> addPhotosToActivity(@CurrentUser User currentUser,
+                                                    @PathVariable long aid,
+                                                          @RequestParam("file")MultipartFile file) {
+        return new ResponseEntity<>(activityService.addPhotoToActivity(currentUser, aid, file), HttpStatus.CREATED);
+    }
+
+    @GetMapping("{aid}/intro-photo")
+    ResponseEntity<InputStreamResource> getIntroPhotoOfActivity(@PathVariable long aid){
+        Activity activity = activityRepository.findById(aid).orElseThrow(
+                () -> new ActivityNotFoundException(aid)
+        );
+        // Set header
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + activity.getIntroPhotoName() + "\"");
+        return new ResponseEntity<>(activityService.getIntroPhoto(aid), headers, HttpStatus.OK);
+
+    }
 
 }

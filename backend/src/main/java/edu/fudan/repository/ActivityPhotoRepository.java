@@ -8,7 +8,4 @@ import java.util.List;
 
 @Repository
 public interface ActivityPhotoRepository extends Neo4jRepository<ActivityPhoto, Long>{
-    List<ActivityPhoto> findActivityPhotosByUserId(Long userId);
-
-    List<ActivityPhoto> findActivityPhotosByActivityId(Long activityId);
 }

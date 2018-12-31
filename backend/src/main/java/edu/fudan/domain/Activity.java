@@ -78,10 +78,12 @@ public class Activity {
     @Relationship(type = "HAS_NOTICE")
     private List<Notice> notices;
 
+    @Relationship(type = "ACTIVITY_HAS_PHOTO", direction = Relationship.OUTGOING)
+    private List<ActivityPhoto> photos;
+
     public Activity(){
 
     }
-
 
     public Activity(Long activityId, User user){
         this.activityId = activityId;
@@ -90,6 +92,11 @@ public class Activity {
         this.participators.add(user);
         this.reviews = new ArrayList<>();
         this.notices = new ArrayList<>();
+        this.photos = new ArrayList<>();
+    }
+
+    public List<ActivityPhoto> getPhotos() {
+        return photos == null ? new ArrayList<>() : photos;
     }
 
     public void setActivityId(Long activityId) {

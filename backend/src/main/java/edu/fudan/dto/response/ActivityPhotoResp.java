@@ -1,5 +1,6 @@
 package edu.fudan.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.fudan.domain.ActivityPhoto;
 import org.neo4j.ogm.annotation.typeconversion.DateString;
 
@@ -13,16 +14,19 @@ public class ActivityPhotoResp {
     private long photoId;
 
     @NotNull
-    private String photoUri;
-
-    @NotNull
     private String activityName;
-
 
     @NotNull
     private long activityId;
 
     @NotNull
+    private long userId;
+
+    @NotNull
+    private String userName;
+
+    @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
     public long getPhotoId() {
@@ -45,9 +49,6 @@ public class ActivityPhotoResp {
         this.date = date;
     }
 
-    public String getPhotoUri() {
-        return photoUri;
-    }
 
     public String getActivityName() {
         return activityName;
@@ -65,23 +66,30 @@ public class ActivityPhotoResp {
 
     }
 
-
-    public ActivityPhotoResp(@NotNull long photoId, @NotNull String photoUri,
-                             @NotNull long activityId, @NotNull Date date) {
-        this.photoId = photoId;
-        this.photoUri = photoUri;
-        this.activityId = activityId;
-        this.date = date;
-    }
+//
 
     public ActivityPhotoResp(ActivityPhoto activityPhoto){
         this.photoId = activityPhoto.getPhotoId();
-        this.activityId = activityPhoto.getActivityId();
+        this.activityId = activityPhoto.getActivity().getActivityId();
+        this.activityName= activityPhoto.getActivity().getName();
+        this.userId = activityPhoto.getUser().getUserId();
+        this.userName = activityPhoto.getUser().getName();
         this.date = activityPhoto.getDate();
-        //todo
     }
 
-    public void setPhotoUri(String photoUri) {
-        this.photoUri = photoUri;
+    public long getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

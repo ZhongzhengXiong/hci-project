@@ -3,6 +3,7 @@ package edu.fudan.domain;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.typeconversion.DateString;
 
 import java.util.Date;
@@ -14,48 +15,69 @@ public class ActivityPhoto {
     private Long photoId;
 
     @Property
-    private Long activityId;
-
-    @Property
-    private Long userId;
+    private String photoName;
 
     @Property
     @DateString
     private Date date;
 
+    @Relationship(type = "USER_HAS_PHOTO", direction = Relationship.INCOMING)
+    private User user;
+
+    @Relationship(type = "ACTIVITY_HAS_PHOTO", direction = Relationship.INCOMING)
+    private Activity activity;
+
+
     public ActivityPhoto(){
 
     }
 
-    public ActivityPhoto(Long photoId, Long activityId, Long userId) {
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
+    }
+
+    public String getPhotoName() {
+
+        return photoName;
+    }
+
+    public ActivityPhoto(Long photoId, Activity activity, User user, String photoName) {
         this.photoId = photoId;
-        this.activityId = activityId;
-        this.userId = userId;
+        this.activity = activity;
+        this.user = user;
         this.date = new Date();
+        this.photoName = photoName;
+
     }
 
-    public Long getUserId() {
-        return userId;
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public Long getPhotoId() {
         return photoId;
     }
 
-    public Long getActivityId() {
-        return activityId;
-    }
 
     public void setPhotoId(Long photoId) {
         this.photoId = photoId;
     }
 
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
+    public User getUser() {
+        return user;
+    }
+
+    public Activity getActivity() {
+        return activity;
     }
 
     public Date getDate() {

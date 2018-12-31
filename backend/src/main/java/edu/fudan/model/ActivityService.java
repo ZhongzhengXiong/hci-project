@@ -6,17 +6,19 @@ import edu.fudan.dto.request.CreateNoticeReq;
 import edu.fudan.dto.request.CreateReviewReq;
 import edu.fudan.dto.request.CreateorUpdateActivityReq;
 import edu.fudan.dto.response.*;
-import edu.fudan.exception.ActivityNotFoundException;
-import edu.fudan.exception.DuplicateUserException;
-import edu.fudan.exception.InvalidInvitingcodeException;
-import edu.fudan.exception.PermissionDeniedException;
+import edu.fudan.exception.*;
 import edu.fudan.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.text.MessageFormat;
 import java.util.*;
 
@@ -311,6 +313,54 @@ public class ActivityService {
     }
 
 
+    public List<ActivityPhotoResp> getAllPhotosOfActivity(User user, long activityId) {
+        // the activity must exist
+        Activity activity = activityRepository.findById(activityId).orElseThrow(
+                () -> new ActivityNotFoundException(activityId)
+        );
+        // check read perm
+        if (!permissionService.checkReadPermOfActivity(user, activityId)) {
+            throw new PermissionDeniedException();
+        }
+
+        List<ActivityPhoto> photos = activity.getPhotos();
+        List<ActivityPhotoResp> activityPhotoResps = new ArrayList<>();
+        for (ActivityPhoto photo : photos) {
+            activityPhotoResps.add(new ActivityPhotoResp(photo));
+        }
+
+        return activityPhotoResps;
+    }
+
+
+    public ActivityPhotoResp addPhotoToActivity(User user, long activityId, MultipartFile file) {
+        // the activity must exist
+        Activity activity = activityRepository.findById(activityId).orElseThrow(
+                () -> new ActivityNotFoundException(activityId)
+        );
+        // check read perm
+        if (!permissionService.checkReadPermOfActivity(user, activityId)) {
+            throw new PermissionDeniedException();
+        }
+
+        long photoId = RandomIdGenerator.getInstance().generateRandomLongId(activityPhotoRepository);
+
+        if (file == null)
+            throw new NullImageFileException();
+        String photoName = Utils.saveFile(file, photoId, activityPhotoDir);
+
+        ActivityPhoto photo = new ActivityPhoto(photoId, activity, user, photoName);
+
+        ActivityPhoto savedPhoto = activityPhotoRepository.save(photo);
+
+        //created message
+        String content = MessageFormat.format(messagesService.uploadPhotoTemplate, user.getName(), activity.getName());
+        messagesService.createMessage(user, content, MessageType.PARTICIPATOR, new Date(), activityId);
+
+        return new ActivityPhotoResp(savedPhoto);
+    }
+
+
     public StatisticsInfoResp getStatisticsOfUser(User currentUser) {
         StatisticsInfoResp statisticsInfoResp = new StatisticsInfoResp();
 
@@ -335,8 +385,7 @@ public class ActivityService {
         statisticsInfoResp.setReviewNum(reviewRepository.
                 findReviewsByUserId(currentUser.getUserId()).size());
 
-        statisticsInfoResp.setUploadPhotoNum(activityPhotoRepository.
-                findActivityPhotosByUserId(currentUser.getUserId()).size());
+        statisticsInfoResp.setUploadPhotoNum(currentUser.getActivityPhotos().size());
 
         Set<String> placeSet = new HashSet<>();
 
@@ -345,6 +394,22 @@ public class ActivityService {
         }
         statisticsInfoResp.setPlaceSet(placeSet);
         return statisticsInfoResp;
+    }
+
+    public InputStreamResource getIntroPhoto(long aid) {
+        Activity activity = activityRepository.findById(aid).orElseThrow(
+                () -> new ActivityNotFoundException(aid)
+        );
+        String introPhotoName = activity.getIntroPhotoName();
+        if (introPhotoName == null || introPhotoName.equals(""))
+            throw new IntroPhotoNotFoundException(aid);
+
+        File photoFile = new File(Paths.get(introPhotoDir + introPhotoName).toString());
+        try {
+            return new InputStreamResource(new FileInputStream(photoFile));
+        } catch (FileNotFoundException e) {
+            throw new ImageIOException();
+        }
     }
 
 }

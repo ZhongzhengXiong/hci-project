@@ -32,11 +32,15 @@ public class User {
     private List<Activity> createdActivities;
     
     
-    @Relationship(type = "OWN_PARTICIPATOR", direction = "INCOMING")
+    @Relationship(type = "OWN_PARTICIPATOR", direction = Relationship.INCOMING)
     private List<Activity>  participatedActivies;
 
     @Relationship(type = "HAS_MESSAGE", direction = "OUTGOING")
     private List<Message> messageList;
+
+
+    @Relationship(type = "USER_HAS_PHOTO", direction = Relationship.OUTGOING)
+    private List<ActivityPhoto> activityPhotos;
 
 
     public List<Activity> getCreatedActivities() {
@@ -69,7 +73,12 @@ public class User {
         this.createdActivities = new ArrayList<>();
         this.messageList = new ArrayList<>();
         this.participatedActivies = new ArrayList<>();
+        this.activityPhotos = new ArrayList<>();
         this.avatar = "";
+    }
+
+    public List<ActivityPhoto> getActivityPhotos() {
+        return activityPhotos ==  null ? new ArrayList<>() : activityPhotos;
     }
 
     public User(Long userId, String name, String password, String phone, String email, String avatar){
