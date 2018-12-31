@@ -1,5 +1,6 @@
 package edu.fudan.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.fudan.domain.Notice;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -15,6 +16,7 @@ public class NoticeResp {
     private String title;
 
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
     public NoticeResp(Notice notice) {

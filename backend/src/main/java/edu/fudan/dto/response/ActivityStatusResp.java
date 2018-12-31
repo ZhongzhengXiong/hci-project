@@ -22,4 +22,15 @@ public class ActivityStatusResp {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public long getActivityId() {
+        return activityId;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public ActivityStatusResp() {
+    }
 }

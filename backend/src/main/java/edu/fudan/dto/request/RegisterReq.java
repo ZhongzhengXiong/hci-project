@@ -1,6 +1,8 @@
 package edu.fudan.dto.request;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -26,6 +28,7 @@ public class RegisterReq {
     private String email;
 
 
+
 //    @NotNull
 //    private String verificationCode;
 
@@ -49,6 +52,7 @@ public class RegisterReq {
     public String getEmail() {
         return email;
     }
+
 
     //    public String getVerificationCode() { return verificationCode; }
 }

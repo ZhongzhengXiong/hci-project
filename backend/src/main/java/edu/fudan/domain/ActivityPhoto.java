@@ -23,6 +23,10 @@ public class ActivityPhoto {
     @DateString
     private Date date;
 
+    public ActivityPhoto(){
+
+    }
+
     public ActivityPhoto(Long photoId, Long activityId, Long userId) {
         this.photoId = photoId;
         this.activityId = activityId;

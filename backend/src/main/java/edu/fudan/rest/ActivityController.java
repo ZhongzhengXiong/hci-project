@@ -1,21 +1,27 @@
 package edu.fudan.rest;
 
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fudan.annotation.Authorization;
 import edu.fudan.annotation.CurrentUser;
 import edu.fudan.domain.User;
 import edu.fudan.dto.request.*;
 import edu.fudan.dto.response.*;
+import edu.fudan.exception.ParseJsonStringException;
 import edu.fudan.model.ActivityPhotoService;
 import edu.fudan.model.ActivityService;
 import edu.fudan.model.ReviewService;
+import org.json.JSONString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -46,9 +52,20 @@ public class ActivityController {
     @PostMapping
     @Authorization
     ResponseEntity<ActivityPrivateResp> createActivity(@CurrentUser User currentUser,
-                                                       @Valid @RequestBody CreateorUpdateActivityReq createActivityReq) {
+                                                       @RequestParam("introPhoto") MultipartFile introPhoto,
+                                                       @RequestParam("createActivityReq") String jsonString) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
+        CreateorUpdateActivityReq createActivityReq = null;
+        try {
+            createActivityReq = mapper.readValue(jsonString, CreateorUpdateActivityReq.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ParseJsonStringException();
+        }
+
         return new ResponseEntity<>(
-                activityService.createActivity(currentUser, createActivityReq), HttpStatus.OK);
+                activityService.createActivity(currentUser, createActivityReq, introPhoto), HttpStatus.OK);
 
     }
 
@@ -56,41 +73,52 @@ public class ActivityController {
     @PatchMapping("/{aid}")
     @Authorization
     ResponseEntity<ActivityStatusResp> updateActivityStatus(@CurrentUser User currentUser, @PathVariable long aid,
-                                                  @RequestBody UpdateActivityStatusReq updateActivityStatusReq) {
+                                                            @RequestBody UpdateActivityStatusReq updateActivityStatusReq) {
 
         return new ResponseEntity<>(activityService.updateActivityStatus(currentUser, aid,
-                updateActivityStatusReq.getStatus()), HttpStatus.NO_CONTENT);
+                updateActivityStatusReq.getStatus()), HttpStatus.OK);
     }
 
     @GetMapping("/{aid}")
     @Authorization
     ResponseEntity<ActivityMetaResp> getActivity(@CurrentUser User currentUser,
-                                               @PathVariable long aid) {
+                                                 @PathVariable long aid) {
         return new ResponseEntity<ActivityMetaResp>(activityService.getActivity(currentUser, aid), HttpStatus.OK);
     }
 
     @PutMapping("/{aid}")
     @Authorization
     ResponseEntity<ActivityPrivateResp> updateActivity(@CurrentUser User currentUser,
-                                                  @PathVariable long aid,
-                                                  @RequestBody CreateorUpdateActivityReq updateActivityReq) {
+                                                       @PathVariable long aid,
+                                                       @RequestParam("introPhoto") MultipartFile file,
+                                                       @RequestParam("updateActivityReq") String jsonString) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
+        CreateorUpdateActivityReq updateActivityReq = null;
+        try {
+            updateActivityReq = mapper.readValue(jsonString, CreateorUpdateActivityReq.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ParseJsonStringException();
+        }
         return new ResponseEntity<>(activityService.updateActivity(currentUser, aid,
-                updateActivityReq), HttpStatus.OK);
+                updateActivityReq, file), HttpStatus.OK);
     }
 
 
     @GetMapping("/{aid}/users")
     @Authorization
     ResponseEntity<List<UserPublicResp>> getUsersOfActivity(@CurrentUser User currentUser,
-                                                            @PathVariable long aid) {
+                                                            @PathVariable("aid") long aid) {
         return new ResponseEntity<>(activityService.getAllUsersOfActivity(currentUser, aid), HttpStatus.OK);
     }
 
-    @PostMapping("/{cid}/users")
+    @PostMapping("/{aid}/users")
     @Authorization
     ResponseEntity<ActivityPrivateResp> addUserToActivity(@CurrentUser User currentUser,
-                                                         @PathVariable long aid,
-                                                         @Valid @RequestBody JoinActivityReq joinActivityReq) {
+                                                          @PathVariable("aid") long aid,
+                                                          @Valid @RequestBody JoinActivityReq joinActivityReq) {
         return new ResponseEntity<>(activityService.addUserToActivity(
                 currentUser, aid, joinActivityReq.getInvitingCode()), HttpStatus.CREATED);
     }

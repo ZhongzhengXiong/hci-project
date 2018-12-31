@@ -22,6 +22,10 @@ public class Notice {
     @DateString
     private Date date;
 
+    public Notice(){
+
+    }
+
     public Notice(Long noticeId, String content, String title) {
         this.noticeId = noticeId;
         this.content = content;

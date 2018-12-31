@@ -24,6 +24,9 @@ public class User {
     @Index(unique = true)
     private String phone;
 
+    @Property
+    private String avatar;
+
 
     @Relationship(type = "CREATE_ACTIVITY", direction = "OUTGOING")
     private List<Activity> createdActivities;
@@ -31,7 +34,6 @@ public class User {
     
     @Relationship(type = "OWN_PARTICIPATOR", direction = "INCOMING")
     private List<Activity>  participatedActivies;
-
 
     @Relationship(type = "HAS_MESSAGE", direction = "OUTGOING")
     private List<Message> messageList;
@@ -46,6 +48,18 @@ public class User {
         return participatedActivies == null? new ArrayList<>(): participatedActivies;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public User(){
+
+    }
+
     public User(Long userId, String name, String password, String phone, String email) {
         this.userId = userId;
         this.name = name;
@@ -55,7 +69,19 @@ public class User {
         this.createdActivities = new ArrayList<>();
         this.messageList = new ArrayList<>();
         this.participatedActivies = new ArrayList<>();
+        this.avatar = "";
+    }
 
+    public User(Long userId, String name, String password, String phone, String email, String avatar){
+        this.userId = userId;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.createdActivities = new ArrayList<>();
+        this.messageList = new ArrayList<>();
+        this.participatedActivies = new ArrayList<>();
+        this.avatar = avatar;
     }
 
     public void setEmail(String email) {

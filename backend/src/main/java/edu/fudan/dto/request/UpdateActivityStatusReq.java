@@ -13,4 +13,7 @@ public class UpdateActivityStatusReq {
     public boolean getStatus() {
         return status;
     }
+
+    public UpdateActivityStatusReq() {
+    }
 }

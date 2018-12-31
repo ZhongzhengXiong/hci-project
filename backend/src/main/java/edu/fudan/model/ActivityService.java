@@ -1,5 +1,6 @@
 package edu.fudan.model;
 
+import edu.fudan.Utils;
 import edu.fudan.domain.*;
 import edu.fudan.dto.request.CreateNoticeReq;
 import edu.fudan.dto.request.CreateReviewReq;
@@ -14,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.text.MessageFormat;
 import java.util.*;
 
 @Service
@@ -35,14 +38,19 @@ public class ActivityService {
 
     private final PermissionService permissionService;
 
+    private final MessagesService messagesService;
+
     @Value("${activity_photo.dir.path}")
-    private String photoDir;
+    private String activityPhotoDir;
+
+    @Value("${intro_photo.dir.path}")
+    private String introPhotoDir;
 
     @Autowired
     public ActivityService(ActivityRepository activityRepository, ReviewRepository reviewRepository,
                            UserRepository userRepository, NoticeRepository noticeRepository,
                            MessageRepository messageRepository, ActivityPhotoRepository activityPhotoRepository,
-                           PermissionService permissionService) {
+                           PermissionService permissionService, MessagesService messagesService) {
         this.activityRepository = activityRepository;
         this.reviewRepository = reviewRepository;
         this.userRepository = userRepository;
@@ -50,32 +58,29 @@ public class ActivityService {
         this.messageRepository = messageRepository;
         this.activityPhotoRepository = activityPhotoRepository;
         this.permissionService = permissionService;
+        this.messagesService = messagesService;
     }
 
     public List<ActivityMetaResp> getAllActivities() {
         List<ActivityMetaResp> activityMetaResps = new ArrayList<>();
         for (Activity activity : activityRepository.findAll()) {
-            //todo: generate photoLink
-            String photoLink = "";
-            ActivityMetaResp activityMetaResp = new ActivityMetaResp(activity, photoLink);
+            ActivityMetaResp activityMetaResp = new ActivityMetaResp(activity);
             activityMetaResps.add(activityMetaResp);
         }
         return activityMetaResps;
     }
 
-    public List<ActivityMetaResp> getAllActivitiesOfUser(User user){
+    public List<ActivityMetaResp> getAllActivitiesOfUser(User user) {
         List<ActivityMetaResp> activityMetaResps = new ArrayList<>();
-        for(Activity activity : user.getParticipatedActivies()){
-            String photoLink = "";
-            ActivityMetaResp activityMetaResp = new ActivityMetaResp(activity, photoLink);
+        for (Activity activity : user.getParticipatedActivies()) {
+            ActivityMetaResp activityMetaResp = new ActivityMetaResp(activity);
             activityMetaResps.add(activityMetaResp);
         }
         return activityMetaResps;
     }
 
 
-
-    public ActivityPrivateResp createActivity(User user, CreateorUpdateActivityReq createActivityReq) {
+    public ActivityPrivateResp createActivity(User user, CreateorUpdateActivityReq createActivityReq, MultipartFile file) {
 
         long activityId = RandomIdGenerator.getInstance().generateRandomLongId(activityRepository);
         Activity activity = new Activity(activityId, user);
@@ -93,14 +98,21 @@ public class ActivityService {
         String invitingCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
         activity.setInvitingCode(invitingCode);
 
-        Activity newActivity = activityRepository.save(activity);
 
-        //todo create message
+        String introPhotoName = "";
+        introPhotoName = Utils.saveFile(file, activityId, introPhotoDir);
+        activity.setIntroPhotoName(introPhotoName);
 
-        //todo: generate photo link
-        String photoLink = "";
-        ActivityPrivateResp activityPrivateResp = new ActivityPrivateResp(newActivity, photoLink);
+        Activity savedActivity = activityRepository.save(activity);
+
+        // create new message
+        String content = MessageFormat.format(messagesService.createActivityTemplate, invitingCode);
+        messagesService.createMessage(user, content, MessageType.CREATOR, new Date(), activityId);
+
+
+        ActivityPrivateResp activityPrivateResp = new ActivityPrivateResp(savedActivity);
         return activityPrivateResp;
+
     }
 
 
@@ -116,9 +128,18 @@ public class ActivityService {
         activity.setStatus(status);
         Activity newActivity = activityRepository.save(activity);
 
-        // todo create message
+        //create new  message
+        String content;
+        if (!status)
+            content = MessageFormat.format(messagesService.closeActivityTemplate, user.getName(), activity.getName());
+        else
+            content = MessageFormat.format(messagesService.reopenActivityTemplate, user.getName(), activity.getName());
+
+        messagesService.createMessage(user, content, MessageType.PARTICIPATOR, new Date(), activityId);
+
 
         return new ActivityStatusResp(newActivity.getActivityId(), newActivity.getStatus());
+
     }
 
     public ActivityMetaResp getActivity(User user, long activityId) {
@@ -127,14 +148,13 @@ public class ActivityService {
         );
         // for user as the participator of this activity
         if (permissionService.checkReadPermOfActivity(user, activityId)) {
-            //todo
-            return new ActivityPrivateResp(activity, generatePhotoLink());
+            return new ActivityPrivateResp(activity);
         }
-        return new ActivityPublicResp(activity, generatePhotoLink());
+        return new ActivityPublicResp(activity);
     }
 
 
-    public ActivityPrivateResp updateActivity(User user, long activityId, CreateorUpdateActivityReq updateActivityReq) {
+    public ActivityPrivateResp updateActivity(User user, long activityId, CreateorUpdateActivityReq updateActivityReq, MultipartFile file) {
         //First, the activity must exist
         Activity activity = activityRepository.findById(activityId).orElseThrow(
                 () -> new ActivityNotFoundException(activityId)
@@ -152,11 +172,16 @@ public class ActivityService {
         activity.setUserLimit(updateActivityReq.getUserLimit());
         activity.setActivityType(updateActivityReq.getType());
 
+
+        activity.setIntroPhotoName(Utils.saveFile(file, activityId, introPhotoDir));
         // save update
         Activity newActivity = activityRepository.save(activity);
-        return new ActivityPrivateResp(newActivity, generatePhotoLink());
 
-        // todo create message
+        // create new message
+        String content = MessageFormat.format(messagesService.updateActivityTemplate, user.getName(), activity.getName());
+        messagesService.createMessage(user, content, MessageType.PARTICIPATOR, new Date(), activityId);
+
+        return new ActivityPrivateResp(newActivity);
     }
 
 
@@ -190,11 +215,14 @@ public class ActivityService {
         //Add user to activity
         activity.addParticipator(user);
 
-        //todo create message
 
         Activity newActivity = activityRepository.save(activity);
-        //todo photoLink
-        return new ActivityPrivateResp(newActivity, generatePhotoLink());
+
+        //create new message
+        String content = MessageFormat.format(messagesService.participateActivityTemplate, user.getName(), activity.getName());
+        messagesService.createMessage(user, content, MessageType.PARTICIPATOR, new Date(), activityId);
+
+        return new ActivityPrivateResp(newActivity);
     }
 
     public List<NoticeResp> getAllNoticesOfActivity(User user, long activityId) {
@@ -214,13 +242,13 @@ public class ActivityService {
         return noticeResps;
     }
 
-    public NoticeResp createNotice(User user, long activityId, CreateNoticeReq createNoticeReq){
+    public NoticeResp createNotice(User user, long activityId, CreateNoticeReq createNoticeReq) {
         // check whether the activity exists
         Activity activity = activityRepository.findById(activityId).orElseThrow(
-                ()  -> new ActivityNotFoundException(activityId)
+                () -> new ActivityNotFoundException(activityId)
         );
         // check permission
-        if(!permissionService.checkReadPermOfActivity(user, activityId))
+        if (!permissionService.checkReadPermOfActivity(user, activityId))
             throw new PermissionDeniedException();
 
         long noticeId = RandomIdGenerator.getInstance().generateRandomLongId(noticeRepository);
@@ -232,38 +260,41 @@ public class ActivityService {
         activityRepository.save(activity);
 
 
+        //create new message
+        String content = MessageFormat.format(messagesService.releaseNoticeTemplate, activity.getName());
+        messagesService.createMessage(user, content, MessageType.PARTICIPATOR, new Date(), activityId);
 
-        // todo create message
+
         return new NoticeResp(newNotice);
     }
 
 
-    public List<ReviewResp> getAllReviewsOfActivity(User user, long activityId){
+    public List<ReviewResp> getAllReviewsOfActivity(User user, long activityId) {
         // the activity must exist
         Activity activity = activityRepository.findById(activityId).orElseThrow(
                 () -> new ActivityNotFoundException(activityId)
         );
         // check read perm
-        if(!permissionService.checkReadPermOfActivity(user, activityId)){
+        if (!permissionService.checkReadPermOfActivity(user, activityId)) {
             throw new PermissionDeniedException();
         }
         List<ReviewResp> reviewResps = new ArrayList<>();
 
-        for(Review review : activity.getReviews()){
+        for (Review review : activity.getReviews()) {
             reviewResps.add(new ReviewResp(review.getReviewId(), review.getUserId(),
                     review.getContent(), review.getDate()));
         }
-        return  reviewResps;
+        return reviewResps;
     }
 
 
-    public ReviewResp createReview(User user, long activityId, CreateReviewReq createReviewReq){
+    public ReviewResp createReview(User user, long activityId, CreateReviewReq createReviewReq) {
         // the activity must exist
         Activity activity = activityRepository.findById(activityId).orElseThrow(
                 () -> new ActivityNotFoundException(activityId)
         );
         // check read perm
-        if(!permissionService.checkReadPermOfActivity(user, activityId)){
+        if (!permissionService.checkReadPermOfActivity(user, activityId)) {
             throw new PermissionDeniedException();
         }
 
@@ -274,7 +305,6 @@ public class ActivityService {
         Review newReview = reviewRepository.save(review);
         activity.addReviews(newReview);
         activityRepository.save(activity);
-        // todo generate message
 
         return new ReviewResp(newReview);
 
@@ -316,8 +346,5 @@ public class ActivityService {
         statisticsInfoResp.setPlaceSet(placeSet);
         return statisticsInfoResp;
     }
-    // todo
-    private String generatePhotoLink() {
-        return "";
-    }
+
 }

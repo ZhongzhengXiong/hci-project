@@ -15,12 +15,55 @@ public class ActivityPhotoResp {
     @NotNull
     private String photoUri;
 
+    @NotNull
+    private String activityName;
+
 
     @NotNull
     private long activityId;
 
     @NotNull
     private Date date;
+
+    public long getPhotoId() {
+        return photoId;
+    }
+
+    public void setPhotoId(long photoId) {
+        this.photoId = photoId;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
+
+    public void setActivityId(long activityId) {
+        this.activityId = activityId;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getPhotoUri() {
+        return photoUri;
+    }
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public long getActivityId() {
+        return activityId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public ActivityPhotoResp(){
+
+    }
 
 
     public ActivityPhotoResp(@NotNull long photoId, @NotNull String photoUri,

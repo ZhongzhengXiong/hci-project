@@ -22,19 +22,35 @@ public class ActivityPublicResp extends ActivityMetaResp{
     @NotBlank
     private long creatorId;
 
-    @NotBlank
-    private boolean status;
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public void setUserLimit(int userLimit) {
+        this.userLimit = userLimit;
+    }
+
+    public void setParticipatorIds(List<Long> participatorIds) {
+        this.participatorIds = participatorIds;
+    }
+
+    public void setCreatorId(long creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public ActivityPublicResp(){
+
+    }
 
 
-    public ActivityPublicResp(Activity activity, String photoLink) {
-        super(activity, photoLink);
+    public ActivityPublicResp(Activity activity) {
+        super(activity);
         this.detail = activity.getDetail();
         this.userLimit = activity.getUserLimit();
         this.participatorIds = new ArrayList<>();
         for(User participator: activity.getParticipators()){
             this.participatorIds.add(participator.getUserId());
         }
-        this.status = activity.getStatus();
         this.creatorId = activity.getCreator().getUserId();
     }
 }

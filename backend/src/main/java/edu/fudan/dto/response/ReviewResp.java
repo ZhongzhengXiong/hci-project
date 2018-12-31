@@ -1,5 +1,6 @@
 package edu.fudan.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.fudan.domain.Review;
 
 import javax.validation.constraints.NotBlank;
@@ -20,6 +21,7 @@ public class ReviewResp {
     private String content;
 
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
     public ReviewResp(@NotBlank long reviewId, @NotBlank long userId, @NotNull String content, @NotNull Date date) {

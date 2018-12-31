@@ -7,9 +7,7 @@ public class UserPublicResp {
 
     private long id;
 
-
-    // todo headPortraitUri
-    private long headPortraitUri;
+    private String avatar;
 
 
     public UserPublicResp() {
@@ -18,7 +16,7 @@ public class UserPublicResp {
     public UserPublicResp(User user) {
         this.name = user.getName();
         this.id = user.getUserId();
-
+        this.avatar = user.getAvatar();
     }
 
     public String getName() {
@@ -29,8 +27,11 @@ public class UserPublicResp {
         return id;
     }
 
-    public long getHeadPortraitUri(){
-        return  headPortraitUri;
+    public String getAvatar() {
+        return avatar;
     }
 
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }

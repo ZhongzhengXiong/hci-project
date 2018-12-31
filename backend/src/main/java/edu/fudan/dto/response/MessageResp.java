@@ -1,5 +1,6 @@
 package edu.fudan.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.fudan.domain.Message;
 
 import java.util.Date;
@@ -8,25 +9,42 @@ public class MessageResp {
 
     private long messageId;
 
-    private String title;
-
     private String content;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date date;
+
+    private String activityName;
+
+    private long activityId;
 
     public MessageResp() {
     }
 
     public MessageResp(Message message) {
         this.messageId = message.getMessageId();
-        this.title = message.getTitle();
         this.content = message.getContent();
         this.date = message.getDate();
+        this.activityName = message.getActivity().getName();
+        this.activityId = message.getActivity().getActivityId();
     }
 
 
-    public String getTitle() {
-        return title;
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
+
+    public void setActivityId(long activityId) {
+        this.activityId = activityId;
+    }
+
+    public String getActivityName() {
+
+        return activityName;
+    }
+
+    public long getActivityId() {
+        return activityId;
     }
 
     public String getContent() {
@@ -46,9 +64,6 @@ public class MessageResp {
         this.messageId = messageId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public void setContent(String content) {
         this.content = content;

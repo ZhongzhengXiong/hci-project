@@ -1,5 +1,7 @@
 package edu.fudan.rest;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.fudan.Application;
 import edu.fudan.annotation.Authorization;
 import edu.fudan.annotation.CurrentUser;
@@ -9,15 +11,23 @@ import edu.fudan.dto.request.RegisterReq;
 import edu.fudan.dto.response.AuthenticationResp;
 import edu.fudan.dto.response.UserPrivateResp;
 import edu.fudan.dto.response.UserPublicResp;
+import edu.fudan.exception.ParseJsonStringException;
+import edu.fudan.exception.UserNotFoundException;
 import edu.fudan.model.UserService;
+import edu.fudan.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
+import javax.websocket.server.PathParam;
+import java.io.IOException;
 
 @Controller
 @CrossOrigin
@@ -25,22 +35,36 @@ import javax.validation.constraints.Pattern;
 public class UserController {
 
     private UserService userService;
+    private UserRepository userRepository;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRepository userRepository) {
+
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     /**
      * User registration request.
      *
-     * @param registerReq, required createUser form data
      * @return user private DTO with email field
      */
+
     @PostMapping
-    ResponseEntity<UserPrivateResp> register(@Valid @RequestBody RegisterReq registerReq) {
+    ResponseEntity<UserPrivateResp> register(@RequestParam("avatar") MultipartFile avatar,
+                                             @RequestParam("registerReq") String jsonString) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
+        RegisterReq registerReq = null;
+        try {
+            registerReq = mapper.readValue(jsonString, RegisterReq.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ParseJsonStringException();
+        }
         UserPrivateResp userPrivateResp = this.userService.createUser(registerReq.getPhone(),
-                registerReq.getName(), registerReq.getPassword(), registerReq.getEmail());
+                registerReq.getName(), registerReq.getPassword(), registerReq.getEmail(), avatar);
         return new ResponseEntity<>(userPrivateResp, HttpStatus.CREATED);
     }
 
@@ -64,7 +88,6 @@ public class UserController {
     @GetMapping("/{uid}")
     ResponseEntity<UserPublicResp> getUser(@PathVariable long uid) {
         UserPublicResp userPublicResp = this.userService.getUserPublic(uid);
-
         return new ResponseEntity<>(userPublicResp, HttpStatus.OK);
     }
 
@@ -79,6 +102,17 @@ public class UserController {
 //        return new ResponseEntity(null, HttpStatus.OK);
 //    }
 
+    @GetMapping("/{uid}/avatar")
+    public ResponseEntity<InputStreamResource> downloadAvatar(@PathVariable long uid) {
+        User user = userRepository.findById(uid).orElseThrow(
+                () -> new UserNotFoundException(uid)
+        );
+        // Set header
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + user.getAvatar() + "\"");
+        return new ResponseEntity<>(userService.downloadAvatarofUser(uid), headers, HttpStatus.OK);
+    }
 
     @PostMapping("/reset_password")
     @Authorization

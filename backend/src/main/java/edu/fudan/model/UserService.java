@@ -1,22 +1,30 @@
 package edu.fudan.model;
 
+import edu.fudan.Utils;
 import edu.fudan.domain.TokenEntry;
 import edu.fudan.domain.User;
 import edu.fudan.dto.response.AuthenticationResp;
 import edu.fudan.dto.response.UserPrivateResp;
 import edu.fudan.dto.response.UserPublicResp;
-import edu.fudan.exception.PhoneConflictException;
-import edu.fudan.exception.PhoneOrPasswordException;
-import edu.fudan.exception.UserNotFoundException;
+import edu.fudan.exception.*;
 import edu.fudan.repository.TokenRepository;
 import edu.fudan.repository.UserRepository;
 import edu.fudan.repository.VerificationCodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 @Transactional
@@ -26,6 +34,9 @@ public class UserService {
     private final TokenRepository tokenRepository;
 
     private final VerificationCodeRepository verificationCodeRepository;
+
+    @Value("${avatar.dir.path}")
+    private String avatarFilePath;
 
     @Autowired
     public UserService(UserRepository userRepository, TokenRepository tokenRepository,
@@ -112,7 +123,6 @@ public class UserService {
         User user = this.userRepository.findById(userId).orElseThrow(
                 () -> new UserNotFoundException(userId) // User not found
         );
-
         return new UserPrivateResp(user);
     }
 
@@ -122,7 +132,7 @@ public class UserService {
      * @return user private data
      * @throws PhoneConflictException, when phone already existed
      */
-    public UserPrivateResp createUser(String phone, String name, String password, String email) {
+    public UserPrivateResp createUser(String phone, String name, String password, String email, MultipartFile file) {
         // Lower case
         phone = phone.toLowerCase();
 
@@ -137,13 +147,20 @@ public class UserService {
         // Create a new user based on the user type
         User newUser = new User(newUserId, name, password, phone, email);
 
+
+        String avatar = "";
+        // Save file (avatar image)
+        avatar = Utils.saveFile(file, newUserId, avatarFilePath);
+
+        // set avatar, if no avatar then avatar = ""
+        newUser.setAvatar(avatar);
+
         // Add this newly created user to user repository
-        User savedUser = this.userRepository.save(newUser);
+        User savedUser = userRepository.save(newUser);
 
         // Return a user private data
         return new UserPrivateResp(savedUser);
     }
-
 
 
     /**
@@ -208,6 +225,29 @@ public class UserService {
     }
 
 
+    public InputStreamResource downloadAvatarofUser(long uid) {
+        // Lecture must exist
+        User user = userRepository.findById(uid).orElseThrow(
+                () -> new UserNotFoundException()
+        );
+
+        if (user.getAvatar() == null || user.getAvatar().equals("")) {
+            throw new UserAvatarNotExistException(uid);
+        }
+
+        //return a file stream to controller rather than all bytes of the file
+        //to handle large files not only small files. when faced with file problems,
+        //always steam, never keep fully in memory
+        File avatarFile = new File(Paths.get(avatarFilePath + user.getAvatar()).toString());
+
+        try {
+            return new InputStreamResource(new FileInputStream(avatarFile));
+        } catch (FileNotFoundException e) {
+            throw new ImageIOException();
+        }
+    }
+
+
     /**
      * Generate a unique user id
      *
@@ -235,4 +275,7 @@ public class UserService {
         user.setPassword(password);
         userRepository.save(user);
     }
+
+
+
 }

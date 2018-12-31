@@ -24,6 +24,10 @@ public class Review {
     private Date date;
 
 
+    public Review(){
+
+    }
+
     public Review(Long reviewId, String content, Long userId) {
         this.reviewId = reviewId;
         this.content = content;

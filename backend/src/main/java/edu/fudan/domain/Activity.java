@@ -45,6 +45,22 @@ public class Activity {
     @Property
     private ActivityType activityType;
 
+//    public boolean isStatus() {
+//        return status;
+//    }
+
+    public String getIntroPhotoName() {
+        return introPhotoName;
+    }
+
+    public void setIntroPhotoName(String introPhotoName) {
+
+        this.introPhotoName = introPhotoName;
+    }
+
+    @Property
+    private String introPhotoName;
+
 
     @Relationship(type = "OWN_PARTICIPATOR", direction = Relationship.OUTGOING)
     private List<User> participators;
@@ -61,6 +77,10 @@ public class Activity {
 
     @Relationship(type = "HAS_NOTICE")
     private List<Notice> notices;
+
+    public Activity(){
+
+    }
 
 
     public Activity(Long activityId, User user){
