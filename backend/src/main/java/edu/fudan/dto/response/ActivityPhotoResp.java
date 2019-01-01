@@ -26,7 +26,7 @@ public class ActivityPhotoResp {
     private String userName;
 
     @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
     private Date date;
 
     public long getPhotoId() {

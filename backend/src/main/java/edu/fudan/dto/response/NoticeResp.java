@@ -16,7 +16,7 @@ public class NoticeResp {
     private String title;
 
     @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
     private Date date;
 
     public NoticeResp(Notice notice) {
@@ -24,6 +24,9 @@ public class NoticeResp {
         this.content = notice.getContent();
         this.title = notice.getTitle();
         this.date = notice.getDate();
+    }
+
+    public NoticeResp() {
     }
 
     public void setNoticeId(Long noticeId) {
@@ -40,5 +43,21 @@ public class NoticeResp {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Long getNoticeId() {
+        return noticeId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

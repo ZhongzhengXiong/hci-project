@@ -27,6 +27,7 @@ public class StatisticsInfoResp {
     private int reviewNum;
 
     @NotNull
+
     private int uploadPhotoNum;
 
     public void setReviewNum(int reviewNum) {
@@ -56,5 +57,27 @@ public class StatisticsInfoResp {
         this.placeSet = placeSet;
     }
 
+    public int getParticipateNum() {
+        return participateNum;
+    }
 
+    public int getCreateNum() {
+        return createNum;
+    }
+
+    public HashMap<ActivityType, Integer> getActivityTypeStats() {
+        return activityTypeStats;
+    }
+
+    public Set<String> getPlaceSet() {
+        return placeSet;
+    }
+
+    public int getReviewNum() {
+        return reviewNum;
+    }
+
+    public int getUploadPhotoNum() {
+        return uploadPhotoNum;
+    }
 }

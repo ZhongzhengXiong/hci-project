@@ -47,6 +47,9 @@ public class MessagesService {
         List<MessageResp> messageResps = new ArrayList<>();
         List<Message> messages = currentUser.getMessageList();
         for(Message message : messages){
+            message = messageRepository.findById(message.getMessageId()).orElseThrow(
+                    () -> new MessageNotFoundException()
+            );
             MessageResp messageResp = new MessageResp(message);
             messageResps.add(messageResp);
         }

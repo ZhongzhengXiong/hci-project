@@ -56,7 +56,7 @@ public class PermissionService {
         Message message = messageRepository.findById(messageId).orElseThrow(
                 () -> new MessageNotFoundException(messageId)
         );
-        return message.getUser().equals(user);
+        return message.getUsers().contains(user);
     }
 
 }

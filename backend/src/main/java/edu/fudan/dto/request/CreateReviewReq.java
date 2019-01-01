@@ -14,4 +14,9 @@ public class CreateReviewReq {
     public String getContent() {
         return content;
     }
+
+    public CreateReviewReq() {
+    }
+
+
 }

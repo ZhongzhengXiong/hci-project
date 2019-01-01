@@ -144,15 +144,21 @@ public class Activity {
     }
 
     public void addParticipator(User user){
+        if(this.participators == null)
+            this.participators = new ArrayList<>();
         this.participators.add(user);
     }
 
     public void addReviews(Review review){
+        if(this.reviews == null)
+            this.reviews = new ArrayList<>();
         this.reviews.add(review);
 
     }
 
     public void addNotice(Notice notice){
+        if(this.notices == null)
+            this.notices = new ArrayList<>();
         this.notices.add(notice);
     }
 

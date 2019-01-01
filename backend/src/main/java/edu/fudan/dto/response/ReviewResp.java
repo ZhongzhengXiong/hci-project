@@ -21,8 +21,43 @@ public class ReviewResp {
     private String content;
 
     @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
     private Date date;
+
+    public ReviewResp() {
+    }
+
+    public long getReviewId() {
+        return reviewId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setReviewId(long reviewId) {
+        this.reviewId = reviewId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public ReviewResp(@NotBlank long reviewId, @NotBlank long userId, @NotNull String content, @NotNull Date date) {
         this.reviewId = reviewId;

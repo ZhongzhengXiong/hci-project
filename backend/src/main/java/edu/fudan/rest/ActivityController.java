@@ -54,7 +54,6 @@ public class ActivityController {
     }
 
     @GetMapping
-    @Authorization
     ResponseEntity<List<ActivityMetaResp>> getAllActivities() {
         return new ResponseEntity<>(activityService.getAllActivities(), HttpStatus.OK);
     }

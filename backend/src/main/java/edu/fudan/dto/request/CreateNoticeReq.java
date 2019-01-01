@@ -15,6 +15,9 @@ public class CreateNoticeReq {
         this.content = content;
     }
 
+    public CreateNoticeReq() {
+    }
+
     public String getTitle() {
         return title;
     }
