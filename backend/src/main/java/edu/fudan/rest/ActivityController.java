@@ -53,10 +53,16 @@ public class ActivityController {
         this.activityRepository = activityRepository;
     }
 
+//    @GetMapping
+//    ResponseEntity<List<ActivityMetaResp>> getAllActivities() {
+//        return new ResponseEntity<>(activityService.getAllActivities(), HttpStatus.OK);
+//    }
+
     @GetMapping
-    ResponseEntity<List<ActivityMetaResp>> getAllActivities() {
-        return new ResponseEntity<>(activityService.getAllActivities(), HttpStatus.OK);
+    ResponseEntity<ActivityMetaResp> getActivity(@RequestParam("invitingcode") String invitingCode){
+        return new ResponseEntity<ActivityMetaResp>(activityService.getActivityByInvitingCode(invitingCode), HttpStatus.OK);
     }
+
 
     @PostMapping
     @Authorization
@@ -123,14 +129,23 @@ public class ActivityController {
         return new ResponseEntity<>(activityService.getAllUsersOfActivity(currentUser, aid), HttpStatus.OK);
     }
 
+//    @PostMapping("/{aid}/users")
+//    @Authorization
+//    ResponseEntity<ActivityPrivateResp> addUserToActivity(@CurrentUser User currentUser,
+//                                                          @PathVariable("aid") long aid,
+//                                                          @Valid @RequestBody JoinActivityReq joinActivityReq) {
+//        return new ResponseEntity<>(activityService.addUserToActivity(
+//                currentUser, aid, joinActivityReq.getInvitingCode()), HttpStatus.CREATED);
+//    }
+
     @PostMapping("/{aid}/users")
     @Authorization
     ResponseEntity<ActivityPrivateResp> addUserToActivity(@CurrentUser User currentUser,
-                                                          @PathVariable("aid") long aid,
-                                                          @Valid @RequestBody JoinActivityReq joinActivityReq) {
-        return new ResponseEntity<>(activityService.addUserToActivity(
-                currentUser, aid, joinActivityReq.getInvitingCode()), HttpStatus.CREATED);
+                                                          @PathVariable("aid") long aid){
+        return new ResponseEntity<>(activityService.addUserToActivity(currentUser, aid), HttpStatus.OK);
     }
+
+
 
 
     @GetMapping("/{aid}/notices")

@@ -2,6 +2,8 @@ package edu.fudan.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.fudan.domain.Review;
+import edu.fudan.domain.User;
+import edu.fudan.repository.UserRepository;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,9 +15,11 @@ public class ReviewResp {
     private long reviewId;
 
 
-    @NotBlank
-    private long userId;
+//    @NotBlank
+//    private long userId;
 
+    @NotNull
+    private UserPublicResp creator;
 
     @NotNull
     private String content;
@@ -31,9 +35,9 @@ public class ReviewResp {
         return reviewId;
     }
 
-    public long getUserId() {
-        return userId;
-    }
+//    public long getUserId() {
+//        return userId;
+//    }
 
     public String getContent() {
         return content;
@@ -47,9 +51,9 @@ public class ReviewResp {
         this.reviewId = reviewId;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+//    public void setUserId(long userId) {
+//        this.userId = userId;
+//    }
 
     public void setContent(String content) {
         this.content = content;
@@ -59,17 +63,26 @@ public class ReviewResp {
         this.date = date;
     }
 
-    public ReviewResp(@NotBlank long reviewId, @NotBlank long userId, @NotNull String content, @NotNull Date date) {
+    public ReviewResp(@NotBlank long reviewId, @NotNull User user, @NotNull String content, @NotNull Date date) {
         this.reviewId = reviewId;
-        this.userId = userId;
+        this.creator = new UserPublicResp(user);
         this.content = content;
         this.date = date;
     }
 
-    public ReviewResp(Review review) {
-        this.reviewId = review.getReviewId();
-        this.userId = review.getReviewId();
-        this.content = review.getContent();
-        this.date = review.getDate();
+//    public ReviewResp(Review review) {
+//        this.reviewId = review.getReviewId();
+//        this.creator = review.getUserId();
+//        this.content = review.getContent();
+//        this.date = review.getDate();
+//    }
+
+
+    public UserPublicResp getCreator() {
+        return creator;
+    }
+
+    public void setCreator(UserPublicResp creator) {
+        this.creator = creator;
     }
 }

@@ -20,10 +20,16 @@ public class ActivityPhotoResp {
     private long activityId;
 
     @NotNull
-    private long userId;
+    private UserPublicResp uploader;
+
+//    @NotNull
+//    private long userId;
+//
+//    @NotNull
+//    private String userName;
 
     @NotNull
-    private String userName;
+    private String photoName;
 
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
@@ -68,28 +74,47 @@ public class ActivityPhotoResp {
 
 //
 
+    public String getPhotoName() {
+        return photoName;
+    }
+
     public ActivityPhotoResp(ActivityPhoto activityPhoto){
         this.photoId = activityPhoto.getPhotoId();
         this.activityId = activityPhoto.getActivity().getActivityId();
         this.activityName= activityPhoto.getActivity().getName();
-        this.userId = activityPhoto.getUser().getUserId();
-        this.userName = activityPhoto.getUser().getName();
+//        this.userId = activityPhoto.getUser().getUserId();
+//        this.userName = activityPhoto.getUser().getName();
         this.date = activityPhoto.getDate();
+        this.photoName = activityPhoto.getPhotoName();
+        this.uploader = new UserPublicResp(activityPhoto.getUser());
+
     }
 
-    public long getUserId() {
-        return userId;
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
     }
 
-    public String getUserName() {
-        return userName;
+    public UserPublicResp getUploader() {
+        return uploader;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUploader(UserPublicResp uploader) {
+        this.uploader = uploader;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    //    public long getUserId() {
+//        return userId;
+//    }
+//
+//    public String getUserName() {
+//        return userName;
+//    }
+//
+//    public void setUserId(long userId) {
+//        this.userId = userId;
+//    }
+//
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
 }

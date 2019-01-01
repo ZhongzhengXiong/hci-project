@@ -5,7 +5,11 @@ import edu.fudan.exception.IllegalActivityTypeException;
 
 public enum ActivityType {
     PARTY("PARTY"),
-    LECTURE("LECTURE");
+    LECTURE("LECTURE"),
+    TRIP("TRIP"),
+    MOVIE("MOVIE"),
+    SPORT("SPORT"),
+    HIKE("HIKE");
 
     private String text;
 

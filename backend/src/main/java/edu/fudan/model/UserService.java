@@ -3,6 +3,7 @@ package edu.fudan.model;
 import edu.fudan.Utils;
 import edu.fudan.domain.TokenEntry;
 import edu.fudan.domain.User;
+import edu.fudan.dto.request.ResetPasswordReq;
 import edu.fudan.dto.response.AuthenticationResp;
 import edu.fudan.dto.response.UserPrivateResp;
 import edu.fudan.dto.response.UserPublicResp;
@@ -274,6 +275,15 @@ public class UserService {
     public void resetPassword(User user, String password) {
         user.setPassword(password);
         userRepository.save(user);
+    }
+
+    public String resetPassword(User user, ResetPasswordReq resetPasswordReq){
+        if(!resetPasswordReq.getOldPassword().equals(user.getPassword()))
+            return "Wrong Password";
+
+        user.setPassword(resetPasswordReq.getNewPassword());
+        userRepository.save(user);
+        return "Success";
     }
 
 

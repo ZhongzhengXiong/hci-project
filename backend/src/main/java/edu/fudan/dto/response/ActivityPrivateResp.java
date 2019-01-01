@@ -19,9 +19,22 @@ public class ActivityPrivateResp extends ActivityMetaResp {
     private List<Long> participatorIds;
 
 
-    @NotBlank
-    private long creatorId;
+//    public String getCreatorAvatar() {
+//        return creatorAvatar;
+//    }
 
+    @NotNull
+    private UserPublicResp creator;
+
+//    @NotBlank
+//    private long creatorId;
+//
+//    @NotNull
+//    private String creatorAvatar;
+
+//    public void setCreatorAvatar(String creatorAvatar) {
+//        this.creatorAvatar = creatorAvatar;
+//    }
 
     @NotNull
     private String invitingCode;
@@ -38,8 +51,10 @@ public class ActivityPrivateResp extends ActivityMetaResp {
         for (User participator : activity.getParticipators()) {
             this.participatorIds.add(participator.getUserId());
         }
-        this.creatorId = activity.getCreator().getUserId();
+//        this.creatorId = activity.getCreator().getUserId();
         this.invitingCode = activity.getInvitingCode();
+//        this.creatorAvatar = activity.getCreator().getAvatar();
+        this.creator = new UserPublicResp(activity.getCreator());
     }
 
     public String getInvitingCode() {
@@ -58,10 +73,30 @@ public class ActivityPrivateResp extends ActivityMetaResp {
         return participatorIds;
     }
 
-    public long getCreatorId() {
-        return creatorId;
+//    public long getCreatorId() {
+//        return creatorId;
+//    }
+
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
+    public void setUserLimit(int userLimit) {
+        this.userLimit = userLimit;
+    }
+
+    public void setParticipatorIds(List<Long> participatorIds) {
+        this.participatorIds = participatorIds;
+    }
+
+    public void setCreator(UserPublicResp creator) {
+        this.creator = creator;
+    }
+
+    public UserPublicResp getCreator() {
+        return creator;
+    }
 
     public ActivityPrivateResp() {
 

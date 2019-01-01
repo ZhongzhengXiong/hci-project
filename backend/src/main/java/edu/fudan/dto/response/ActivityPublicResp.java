@@ -4,6 +4,7 @@ import edu.fudan.domain.Activity;
 import edu.fudan.domain.User;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +19,14 @@ public class ActivityPublicResp extends ActivityMetaResp{
     @NotBlank
     private List<Long>  participatorIds;
 
+    @NotNull
+    private UserPublicResp creator;
 
-    @NotBlank
-    private long creatorId;
+//    @NotBlank
+//    private long creatorId;
+//
+//    @NotNull
+//    private String creatorAvatar;
 
     public void setDetail(String detail) {
         this.detail = detail;
@@ -34,14 +40,22 @@ public class ActivityPublicResp extends ActivityMetaResp{
         this.participatorIds = participatorIds;
     }
 
-    public void setCreatorId(long creatorId) {
-        this.creatorId = creatorId;
-    }
+//    public void setCreatorId(long creatorId) {
+//        this.creatorId = creatorId;
+//    }
 
     public ActivityPublicResp(){
 
     }
 
+//    public void setCreatorAvatar(String creatorAvatar) {
+//        this.creatorAvatar = creatorAvatar;
+//    }
+//
+//    public String getCreatorAvatar() {
+//
+//        return creatorAvatar;
+//    }
 
     public ActivityPublicResp(Activity activity) {
         super(activity);
@@ -51,6 +65,28 @@ public class ActivityPublicResp extends ActivityMetaResp{
         for(User participator: activity.getParticipators()){
             this.participatorIds.add(participator.getUserId());
         }
-        this.creatorId = activity.getCreator().getUserId();
+        this.creator = new UserPublicResp(activity.getCreator());
+//        this.creatorId = activity.getCreator().getUserId();
+//        this.creatorAvatar = activity.getCreator().getAvatar();
+    }
+
+    public void setCreator(UserPublicResp creator) {
+        this.creator = creator;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public int getUserLimit() {
+        return userLimit;
+    }
+
+    public List<Long> getParticipatorIds() {
+        return participatorIds;
+    }
+
+    public UserPublicResp getCreator() {
+        return creator;
     }
 }

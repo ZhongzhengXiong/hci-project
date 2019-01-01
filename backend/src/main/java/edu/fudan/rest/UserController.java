@@ -8,6 +8,7 @@ import edu.fudan.annotation.CurrentUser;
 import edu.fudan.domain.User;
 import edu.fudan.dto.request.MailRelatedReq;
 import edu.fudan.dto.request.RegisterReq;
+import edu.fudan.dto.request.ResetPasswordReq;
 import edu.fudan.dto.response.AuthenticationResp;
 import edu.fudan.dto.response.UserPrivateResp;
 import edu.fudan.dto.response.UserPublicResp;
@@ -28,7 +29,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.websocket.server.PathParam;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @CrossOrigin
@@ -120,9 +123,10 @@ public class UserController {
 
     @PostMapping("/reset_password")
     @Authorization
-    ResponseEntity resetPassword(@CurrentUser User user, @RequestParam("password") @Pattern(regexp = Application.PASSWORD_REGEX) String password) {
-        userService.resetPassword(user, password);
-        return new ResponseEntity(null, HttpStatus.OK);
+    @ResponseBody
+    ResponseEntity<Map> resetPassword(@CurrentUser User user, @RequestBody ResetPasswordReq resetPasswordReq) {
+        return new ResponseEntity<>(
+                Collections.singletonMap("status", userService.resetPassword(user, resetPasswordReq)), HttpStatus.OK);
     }
 
 

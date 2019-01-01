@@ -97,8 +97,14 @@ public class ActivityService {
         activity.setUserLimit(createActivityReq.getUserLimit());
 
         // generate inviting code
-        String invitingCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
-        activity.setInvitingCode(invitingCode);
+
+//        while(true){
+//            String invitingCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
+//
+//
+//            activity.setInvitingCode(invitingCode);
+//        }
+        String  invitingCode = RandomIdGenerator.getInstance().generateRandomLongId(activityRepository) + "";
 
 
         String introPhotoName = "";
@@ -115,6 +121,14 @@ public class ActivityService {
         ActivityPrivateResp activityPrivateResp = new ActivityPrivateResp(savedActivity);
         return activityPrivateResp;
 
+    }
+
+    public ActivityMetaResp getActivityByInvitingCode(String invitingCode){
+        Activity activity = activityRepository.findActivityByInvitingCode(invitingCode).orElseThrow(
+                () -> new ActivityNotFoundException()
+        );
+
+        return new ActivityMetaResp(activity);
     }
 
 
@@ -154,6 +168,8 @@ public class ActivityService {
         }
         return new ActivityPublicResp(activity);
     }
+
+//    public Activity
 
 
     public ActivityPrivateResp updateActivity(User user, long activityId, CreateorUpdateActivityReq updateActivityReq, MultipartFile file) {
@@ -227,6 +243,24 @@ public class ActivityService {
         return new ActivityPrivateResp(newActivity);
     }
 
+    public ActivityPrivateResp addUserToActivity(User user, long activityId){
+        Activity activity = activityRepository.findById(activityId).orElseThrow(
+                () -> new ActivityNotFoundException()
+        );
+        //Current user must have not participated in the activity
+        if (activity.getParticipators().contains(user)) {
+            throw new DuplicateUserException();
+        }
+        activity.addParticipator(user);
+        Activity newActivity = activityRepository.save(activity);
+
+        //create new message
+        String content = MessageFormat.format(messagesService.participateActivityTemplate, user.getName(), activity.getName());
+        messagesService.createMessage(user, content, MessageType.PARTICIPATOR, new Date(), activityId);
+
+        return new ActivityPrivateResp(newActivity);
+    }
+
     public List<NoticeResp> getAllNoticesOfActivity(User user, long activityId) {
         Activity activity = activityRepository.findById(activityId).orElseThrow(
                 () -> new ActivityNotFoundException(activityId)
@@ -241,6 +275,12 @@ public class ActivityService {
         for (Notice notice : activity.getNotices()) {
             noticeResps.add(new NoticeResp(notice));
         }
+        noticeResps.sort(new Comparator<NoticeResp>() {
+            @Override
+            public int compare(NoticeResp o1, NoticeResp o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         return noticeResps;
     }
 
@@ -282,10 +322,26 @@ public class ActivityService {
         }
         List<ReviewResp> reviewResps = new ArrayList<>();
 
+
         for (Review review : activity.getReviews()) {
-            reviewResps.add(new ReviewResp(review.getReviewId(), review.getUserId(),
+            User user1 = userRepository.findById(review.getUserId()).orElseThrow(
+                    () -> new UserNotFoundException(review.getUserId())
+            );
+            reviewResps.add(new ReviewResp(review.getReviewId(), user1,
                     review.getContent(), review.getDate()));
         }
+        reviewResps.sort(new Comparator<ReviewResp>() {
+            @Override
+            public int compare(ReviewResp o1, ReviewResp o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+        reviewResps.sort(new Comparator<ReviewResp>() {
+            @Override
+            public int compare(ReviewResp o1, ReviewResp o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         return reviewResps;
     }
 
@@ -308,14 +364,14 @@ public class ActivityService {
         activity.addReviews(newReview);
         activityRepository.save(activity);
 
-        return new ReviewResp(newReview);
+        return new ReviewResp(newReview.getReviewId(), user, newReview.getContent(), newReview.getDate());
 
     }
 
 
     public List<ActivityPhotoResp> getAllPhotosOfActivity(User user, long activityId) {
         // the activity must exist
-        Activity activity = activityRepository.findById(activityId).orElseThrow(
+        Activity activity = activityRepository.findById(activityId, 2).orElseThrow(
                 () -> new ActivityNotFoundException(activityId)
         );
         // check read perm
@@ -329,6 +385,12 @@ public class ActivityService {
             activityPhotoResps.add(new ActivityPhotoResp(photo));
         }
 
+        activityPhotoResps.sort(new Comparator<ActivityPhotoResp>() {
+            @Override
+            public int compare(ActivityPhotoResp o1, ActivityPhotoResp o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         return activityPhotoResps;
     }
 
@@ -370,29 +432,44 @@ public class ActivityService {
         statisticsInfoResp.setParticipateNum(activities.size());
 
         HashMap<ActivityType, Integer> activityTypeStats = new HashMap<>();
-
+        int maxNumOfType = 0;
+        ActivityType mostFrequentType = null;
         for (Activity activity : activities) {
             ActivityType activityType = activity.getActivityType();
             Integer num = activityTypeStats.get(activityType);
             if (num == null)
-                activityTypeStats.put(activityType, 0);
-            else
-                activityTypeStats.put(activityType, num + 1);
+                num = -1;
+            activityTypeStats.put(activityType, num + 1);
+            if((num+1) > maxNumOfType){
+                maxNumOfType = num+1;
+                mostFrequentType = activityType;
+            }
         }
 
-        statisticsInfoResp.setActivityTypeStats(activityTypeStats);
+        statisticsInfoResp.setMostFrequentType(mostFrequentType);
+
+
 
         statisticsInfoResp.setReviewNum(reviewRepository.
                 findReviewsByUserId(currentUser.getUserId()).size());
 
         statisticsInfoResp.setUploadPhotoNum(currentUser.getActivityPhotos().size());
 
-        Set<String> placeSet = new HashSet<>();
-
+        HashMap<String, Integer> placeStats = new HashMap<>();
+        int maxNumOfPlace = 0;
+        String mostFrequentPlace = "";
         for (Activity activity : activities) {
-            placeSet.add(activity.getPlace());
+            String place = activity.getPlace();
+            Integer num = placeStats.get(place);
+            if (num == null)
+                num = -1;
+            placeStats.put(place, num + 1);
+            if((num+1) > maxNumOfPlace){
+                maxNumOfPlace = num+1;
+                mostFrequentPlace = place;
+            }
         }
-        statisticsInfoResp.setPlaceSet(placeSet);
+        statisticsInfoResp.setMostFrequentPlace(mostFrequentPlace);
         return statisticsInfoResp;
     }
 

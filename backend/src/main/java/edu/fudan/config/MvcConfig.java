@@ -4,11 +4,13 @@ import edu.fudan.repository.UserRepository;
 import edu.fudan.rest.AuthorizationInterceptor;
 import edu.fudan.rest.CurrentUserMethodArgumentResolver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
@@ -48,16 +50,23 @@ public class MvcConfig implements WebMvcConfigurer {
         };
     }
 
-//    @Bean
-//    public WebMvcConfigurer resourceConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//                registry.addResourceHandler("/**")
-//                        .addResourceLocations("file:"+ Constants.FILE_PATH, Constants.LECTURE_PATH);
-//            }
-//        };
-//    }
+    @Value("${activity_photo.dir.path}")
+    private String activityPhotoPath;
+    @Value("${avatar.dir.path}")
+    private String avatarPath;
+    @Value("${intro_photo.dir.path}")
+    private String introPhotoPath;
+
+    @Bean
+    public WebMvcConfigurer resourceConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addResourceHandlers(ResourceHandlerRegistry registry) {
+                registry.addResourceHandler("/avatar/**", "/introphoto/**", "/activityphoto/**")
+                        .addResourceLocations("file:"+ avatarPath, "file:"+ introPhotoPath, "file:"+activityPhotoPath);
+            }
+        };
+    }
 
 
 }

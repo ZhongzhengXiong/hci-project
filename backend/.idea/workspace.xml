@@ -2,32 +2,80 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7fac0dc-2256-499d-b2e6-dcced0225649" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/ResetPasswordReq.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/exception/WrongPasswordException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/Application.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/Application.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/config/MvcConfig$1.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/config/MvcConfig$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/config/MvcConfig.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/config/MvcConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Activity.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Activity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/ActivityPhoto.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/ActivityPhoto.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/ActivityType.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/ActivityType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Message.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Message.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/MessageType.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/MessageType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Notice.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Notice.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Review.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/Review.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/TokenEntry.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/TokenEntry.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/domain/User.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/domain/User.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/request/CreateNoticeReq.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/request/CreateNoticeReq.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/request/CreateReviewReq.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/request/CreateReviewReq.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/request/UpdateActivityStatusReq.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/request/UpdateActivityStatusReq.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityMetaResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityMetaResp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityPhotoResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityPhotoResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityPrivateResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityPrivateResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityPublicResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityPublicResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityStatusResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ActivityStatusResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/AuthenticationResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/AuthenticationResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ErrorResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ErrorResp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/MessageResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/MessageResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/NoticeResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/NoticeResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ReviewResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/ReviewResp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/StatisticsInfoResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/StatisticsInfoResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/UserPrivateResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/UserPrivateResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/UserPublicResp.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/dto/response/UserPublicResp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/exception/ActivityNotFoundException.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/exception/ActivityNotFoundException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/exception/IllegalActivityTypeException.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/exception/IllegalActivityTypeException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/exception/IllegalMessageTypeException.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/exception/IllegalMessageTypeException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/exception/MessageNotFoundException.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/exception/MessageNotFoundException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/exception/PhoneConflictException.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/exception/PhoneConflictException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/exception/UserNotFoundException.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/exception/UserNotFoundException.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/model/ActivityPhotoService.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/model/ActivityPhotoService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/model/ActivityService.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/model/ActivityService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/model/MessagesService.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/model/MessagesService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/model/PermissionService.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/model/PermissionService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/ActivityPhotoRepository.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/ActivityPhotoRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/model/RandomIdGenerator.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/model/RandomIdGenerator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/model/UserService.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/model/UserService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/ActivityRepository.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/ActivityRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/ReviewRepository.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/ReviewRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/TokenRepository.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/TokenRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/UserRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/VerificationCodeRepository.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/VerificationCodeRepository.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/impl/RedisTokenRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/impl/RedisTokenRepositoryImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/repository/impl/RedisVerificationCodeRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/repository/impl/RedisVerificationCodeRepositoryImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/rest/AccountController.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/rest/AccountController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/rest/ActivityController.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/rest/ActivityController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/rest/AuthorizationInterceptor.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/rest/AuthorizationInterceptor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/rest/CurrentUserMethodArgumentResolver.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/rest/CurrentUserMethodArgumentResolver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/rest/TokenController.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/rest/TokenController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/edu/fudan/rest/UserController.class" afterPath="$PROJECT_DIR$/target/classes/edu/fudan/rest/UserController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/domain/Activity.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/domain/Activity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateNoticeReq.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateNoticeReq.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateReviewReq.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateReviewReq.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/config/MvcConfig.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/config/MvcConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityPhoto.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityPhoto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityType.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPhotoResp.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPhotoResp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/MessageResp.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/MessageResp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/NoticeResp.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/NoticeResp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPrivateResp.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPrivateResp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPublicResp.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPublicResp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ReviewResp.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ReviewResp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/StatisticsInfoResp.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/StatisticsInfoResp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityPhotoService.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityPhotoService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/model/MessagesService.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/model/MessagesService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/model/PermissionService.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/model/PermissionService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/model/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/model/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/repository/ActivityRepository.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/repository/ActivityRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/repository/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/repository/UserRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/fudan/rest/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/edu/fudan/rest/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,130 +87,111 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ErrorResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ErrorResp.java">
+      <file leaf-file-name="ActivityController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2820">
+              <caret line="169" column="99" lean-forward="false" selection-start-line="169" selection-start-column="98" selection-end-line="169" selection-end-column="99" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterReq.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/RegisterReq.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="23" column="28" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="23" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/Message.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthenticationResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/AuthenticationResp.java">
+      <file leaf-file-name="ActivityType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="80">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityStatusResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityStatusResp.java">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            <state relative-caret-position="574">
+              <caret line="109" column="7" lean-forward="false" selection-start-line="109" selection-start-column="7" selection-end-line="109" selection-end-column="7" />
               <folding>
-                <element signature="e#631#632#0" expanded="true" />
-                <element signature="e#660#661#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityPublicResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPublicResp.java">
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="540">
+              <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityPrivateResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPrivateResp.java">
+      <file leaf-file-name="ActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivityPhotoResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPhotoResp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="28" column="63" lean-forward="false" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivityMetaResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityMetaResp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateReviewReq.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateReviewReq.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReviewResp.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ReviewResp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+            <state relative-caret-position="298">
+              <caret line="343" column="11" lean-forward="false" selection-start-line="343" selection-start-column="11" selection-end-line="343" selection-end-column="11" />
               <folding>
-                <element signature="e#583#584#0" expanded="true" />
-                <element signature="e#614#615#0" expanded="true" />
-                <element signature="e#643#644#0" expanded="true" />
-                <element signature="e#677#678#0" expanded="true" />
-                <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#736#737#0" expanded="true" />
-                <element signature="e#763#764#0" expanded="true" />
-                <element signature="e#809#810#0" expanded="true" />
-                <element signature="e#849#850#0" expanded="true" />
-                <element signature="e#891#892#0" expanded="true" />
-                <element signature="e#927#928#0" expanded="true" />
-                <element signature="e#973#974#0" expanded="true" />
-                <element signature="e#1011#1012#0" expanded="true" />
-                <element signature="e#1049#1050#0" expanded="true" />
-                <element signature="e#1081#1082#0" expanded="true" />
+                <element signature="e#11308#11309#0" expanded="true" />
+                <element signature="e#11383#11384#0" expanded="true" />
+                <element signature="e#13522#13523#0" expanded="true" />
+                <element signature="e#13597#13598#0" expanded="true" />
+                <element signature="e#13750#13751#0" expanded="true" />
+                <element signature="e#13825#13826#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoticeResp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/NoticeResp.java">
+      <file leaf-file-name="PermissionService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/PermissionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="18" column="58" lean-forward="false" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="63" />
-              <folding>
-                <element signature="e#1031#1032#0" expanded="true" />
-                <element signature="e#1062#1063#0" expanded="true" />
-                <element signature="e#1096#1097#0" expanded="true" />
-                <element signature="e#1126#1127#0" expanded="true" />
-                <element signature="e#1158#1159#0" expanded="true" />
-                <element signature="e#1186#1187#0" expanded="true" />
-                <element signature="e#1215#1216#0" expanded="true" />
-                <element signature="e#1242#1243#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/AccountController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="93" column="74" lean-forward="false" selection-start-line="93" selection-start-column="74" selection-end-line="93" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessagesService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/MessagesService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="56" column="48" lean-forward="false" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -197,6 +226,15 @@
       <find>createA</find>
       <find>updateActivityS</find>
       <find>createActivi</find>
+      <find>createAcrt</find>
+      <find>create</find>
+      <find>createAc</find>
+      <find>addUser</find>
+      <find>photo</find>
+      <find>notice</find>
+      <find>reviews</find>
+      <find>Message</find>
+      <find>message</find>
     </findStrings>
     <replaceStrings>
       <replace>phone</replace>
@@ -214,13 +252,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/MessageRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/NoticeRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/ReviewRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/ActivityRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/config/MvcConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/edu/fudan/repository/UserRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/PhoneConflictException.java" />
@@ -230,41 +262,47 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/RegisterReq.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/UserPublicResp.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/WrongFileTypeException.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/AvatarIOException.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/ImageIOException.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/Notice.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/Review.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/Utils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPublicResp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPrivateResp.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateorUpdateActivityReq.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityMetaResp.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/UpdateActivityStatusReq.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityStatusResp.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityPhoto.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/NullImageFileException.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/ActivityPhotoRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/ActivityPhotoNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/rest/PhotoController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityPhotoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/IntroPhotoNotFoundException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/PermissionService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/MessagesService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/StatisticsInfoResp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateNoticeReq.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/rest/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/Activity.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/NoticeResp.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/MessageResp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPhotoResp.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateReviewReq.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/UserRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/config/MvcConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/exception/WrongPasswordException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/ResetPasswordReq.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/rest/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/StatisticsInfoResp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/repository/ActivityRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPhotoResp.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ReviewResp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityPhoto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPublicResp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPrivateResp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityPhotoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/model/MessagesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityType.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -358,6 +396,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fudan" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hci-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fudan" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -414,15 +461,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fudan" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hci-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fudan" type="462c0819:PsiDirectoryNode" />
               <item name="rest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -452,6 +490,11 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fudan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hci-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -645,7 +688,7 @@
       <workItem from="1546011718552" duration="7689000" />
       <workItem from="1546050082602" duration="44308000" />
       <workItem from="1546151653609" duration="52000" />
-      <workItem from="1546152236756" duration="42890000" />
+      <workItem from="1546152236756" duration="64026000" />
     </task>
     <task id="LOCAL-00001" summary="add message service, avatar function completed">
       <created>1546226451578</created>
@@ -673,14 +716,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103728000" />
+    <option name="totallyTimeSpent" value="124864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15719467" sideWeight="0.5028612" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37726724" sideWeight="0.105150215" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -696,12 +738,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3337364" sideWeight="0.49713877" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70374846" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37726724" sideWeight="0.8948498" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70374846" sideWeight="0.4914163" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.528416" sideWeight="0.49713877" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5114873" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24678111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3083434" sideWeight="0.8898426" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24678111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -756,7 +798,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/fudan/model/UserService.java</url>
-          <line>112</line>
+          <line>113</line>
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
@@ -768,7 +810,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java</url>
-          <line>75</line>
+          <line>81</line>
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
@@ -780,280 +822,114 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java</url>
-          <line>114</line>
+          <line>120</line>
           <properties />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java</url>
-          <line>113</line>
-          <properties />
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java</url>
-          <line>387</line>
-          <properties />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java</url>
-          <line>395</line>
-          <properties />
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java</url>
-          <line>147</line>
-          <properties />
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="65" />
+      <option name="time" value="75" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/UpdateUserReq.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        <state relative-caret-position="136">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/Notice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/CreateorUpdateActivityReq.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="28" column="44" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/TokenEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/JoinActivityReq.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="33" />
-          <folding>
-            <element signature="e#232#233#0" expanded="false" />
-            <element signature="e#267#268#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/ParseJsonStringException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/WrongFileTypeException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/NullImageFileException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/UserNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
-          <folding>
-            <element signature="e#363#364#0" expanded="false" />
-            <element signature="e#436#437#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/repository/ActivityPhotoRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityPhotoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="66" column="9" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="66" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/PhotoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="45" column="107" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="45" selection-end-column="107" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/ActivityPhotoNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="13" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#291#292#0" expanded="false" />
-            <element signature="e#332#333#0" expanded="false" />
-            <element signature="e#391#392#0" expanded="false" />
-            <element signature="e#466#467#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/IntroPhotoNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="75" lean-forward="false" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#284#285#0" expanded="false" />
-            <element signature="e#350#351#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/PermissionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/RandomIdGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/repository/MessageRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/repository/ReviewRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/repository/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="140">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/Utils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/ResetPasswordReq.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        <state relative-caret-position="-132">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#960#961#0" expanded="true" />
+            <element signature="e#1006#1007#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/StatisticsInfoResp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="37" />
+        <state relative-caret-position="320">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#3337#3338#0" expanded="true" />
-            <element signature="e#3413#3414#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#831#832#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+            <element signature="e#1261#1262#0" expanded="true" />
+            <element signature="e#1319#1320#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/Message.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-384">
-          <caret line="35" column="29" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/MessagesService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/AuthorizationInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-262">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+        <state relative-caret-position="50">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1546310660589" expanded="true" signature="725:792" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.7.RELEASE/spring-data-commons-2.0.7.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/repository/ActivityRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/ActivityNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/UserPublicResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,126 +941,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityMetaResp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="155" column="0" lean-forward="true" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-          <folding>
-            <marker date="1546310660589" expanded="true" signature="725:792" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.0.6.RELEASE/spring-tx-5.0.6.RELEASE.jar!/org/springframework/transaction/interceptor/TransactionAspectSupport.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="184" column="0" lean-forward="false" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.6.RELEASE/spring-aop-5.0.6.RELEASE.jar!/org/springframework/aop/framework/ReflectiveMethodInvocation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.6.RELEASE/spring-aop-5.0.6.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="468" column="0" lean-forward="false" selection-start-line="468" selection-start-column="0" selection-end-line="468" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.0.6.RELEASE/spring-core-5.0.6.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="269" column="0" lean-forward="false" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/AccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="106" column="77" lean-forward="true" selection-start-line="106" selection-start-column="77" selection-end-line="106" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/UserPublicResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/UserPrivateResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/StatisticsInfoResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/MessageResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="13" column="64" lean-forward="false" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ErrorResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/AuthenticationResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="197">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1200,51 +960,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPublicResp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/AuthenticationResp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPrivateResp.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.0.2.RELEASE/spring-boot-autoconfigure-2.0.2.RELEASE.jar!/org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="76">
+          <caret line="249" column="44" lean-forward="false" selection-start-line="249" selection-start-column="44" selection-end-line="249" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/NoticeResp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="18" column="58" lean-forward="false" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="63" />
+        <state relative-caret-position="717">
+          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding>
-            <element signature="e#1031#1032#0" expanded="true" />
-            <element signature="e#1062#1063#0" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1158#1159#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1215#1216#0" expanded="true" />
-            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#3523#3524#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPhotoResp.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.6.RELEASE/spring-aop-5.0.6.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="28" column="63" lean-forward="false" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
+        <state relative-caret-position="360">
+          <caret line="481" column="0" lean-forward="false" selection-start-line="481" selection-start-column="0" selection-end-line="481" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityMetaResp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/WrongPasswordException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="e#276#277#0" expanded="false" />
+            <element signature="e#317#318#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/MessageNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/NullImageFileException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/ParseJsonStringException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/PhoneConflictException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/UserAvatarNotExistException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/PhoneOrPasswordException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/RandomIdGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ReviewService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5660">
+          <caret line="285" column="23" lean-forward="false" selection-start-line="285" selection-start-column="23" selection-end-line="285" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-neo4j/5.0.7.RELEASE/spring-data-neo4j-5.0.7.RELEASE.jar!/org/springframework/data/neo4j/repository/Neo4jRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-neo4j/5.0.7.RELEASE/spring-data-neo4j-5.0.7.RELEASE.jar!/org/springframework/data/neo4j/repository/support/SimpleNeo4jRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="109" column="39" lean-forward="false" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1257,27 +1103,216 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/Review.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/exception/UserNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityPhoto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="e#1490#1491#0" expanded="true" />
+            <element signature="e#1530#1531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPublicResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="76" column="31" lean-forward="false" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
+          <folding>
+            <element signature="e#1825#1826#0" expanded="true" />
+            <element signature="e#1863#1864#0" expanded="true" />
+            <element signature="e#1925#1926#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
+            <element signature="e#1990#1991#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#2074#2075#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPrivateResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="80" column="42" lean-forward="false" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+          <folding>
+            <element signature="e#1990#1991#0" expanded="true" />
+            <element signature="e#2037#2038#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2145#2146#0" expanded="true" />
+            <element signature="e#2199#2200#0" expanded="true" />
+            <element signature="e#2253#2254#0" expanded="true" />
+            <element signature="e#2291#2292#0" expanded="true" />
+            <element signature="e#2333#2334#0" expanded="true" />
+            <element signature="e#2363#2364#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ActivityPhotoResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="114" column="7" lean-forward="true" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/ReviewResp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        <state relative-caret-position="1102">
+          <caret line="77" column="7" lean-forward="true" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
           <folding>
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#736#737#0" expanded="true" />
-            <element signature="e#763#764#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
-            <element signature="e#1011#1012#0" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#1754#1755#0" expanded="true" />
+            <element signature="e#1784#1785#0" expanded="true" />
+            <element signature="e#1838#1839#0" expanded="true" />
+            <element signature="e#1876#1877#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/NoticeResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="18" column="58" lean-forward="false" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/TokenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityPhotoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="62" column="60" lean-forward="false" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/ActivityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="343" column="11" lean-forward="false" selection-start-line="343" selection-start-column="11" selection-end-line="343" selection-end-column="11" />
+          <folding>
+            <element signature="e#11308#11309#0" expanded="true" />
+            <element signature="e#11383#11384#0" expanded="true" />
+            <element signature="e#13522#13523#0" expanded="true" />
+            <element signature="e#13597#13598#0" expanded="true" />
+            <element signature="e#13750#13751#0" expanded="true" />
+            <element signature="e#13825#13826#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/response/MessageResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="e#1157#1158#0" expanded="true" />
+            <element signature="e#1184#1185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/PermissionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/AccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="93" column="74" lean-forward="false" selection-start-line="93" selection-start-column="74" selection-end-line="93" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/model/MessagesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="56" column="48" lean-forward="false" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/ActivityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2820">
+          <caret line="169" column="99" lean-forward="false" selection-start-line="169" selection-start-column="98" selection-end-line="169" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/dto/request/RegisterReq.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="23" column="28" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="23" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/domain/ActivityType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/fudan/rest/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="109" column="7" lean-forward="false" selection-start-line="109" selection-start-column="7" selection-end-line="109" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>

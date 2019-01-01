@@ -27,6 +27,11 @@ public class ActivityPhoto {
     @Relationship(type = "ACTIVITY_HAS_PHOTO", direction = Relationship.INCOMING)
     private Activity activity;
 
+//    @Property
+//    private long activityId;
+
+
+
 
     public ActivityPhoto(){
 
@@ -47,9 +52,12 @@ public class ActivityPhoto {
         this.user = user;
         this.date = new Date();
         this.photoName = photoName;
-
+//        this.activityId = activity.getActivityId();
     }
 
+//    public long getActivityId() {
+//        return activityId;
+//    }
 
     public void setDate(Date date) {
         this.date = date;
@@ -66,6 +74,10 @@ public class ActivityPhoto {
     public Long getPhotoId() {
         return photoId;
     }
+//
+//    public long getUserId() {
+//        return userId;
+//    }
 
 
     public void setPhotoId(Long photoId) {

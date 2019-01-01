@@ -6,6 +6,7 @@ import edu.fudan.domain.User;
 import edu.fudan.dto.response.ActivityPhotoResp;
 import edu.fudan.exception.*;
 import edu.fudan.repository.ActivityPhotoRepository;
+import edu.fudan.repository.ActivityRepository;
 import edu.fudan.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -25,6 +27,7 @@ import java.util.List;
 public class ActivityPhotoService {
     private final ActivityPhotoRepository activityPhotoRepository;
     private final UserRepository userRepository;
+    private final ActivityRepository activityRepository;
 
     @Value("${activity_photo.dir.path}")
     private String photoDir;
@@ -32,18 +35,34 @@ public class ActivityPhotoService {
 
     @Autowired
     public ActivityPhotoService(ActivityPhotoRepository activityPhotoRepository,
-                                UserRepository userRepository) {
+                                UserRepository userRepository,
+                                ActivityRepository activityRepository) {
         this.activityPhotoRepository = activityPhotoRepository;
         this.userRepository = userRepository;
+        this.activityRepository = activityRepository;
     }
 
 
     public List<ActivityPhotoResp> getAllPhotosfUser(User currentUser) {
+        long userId = currentUser.getUserId();
+        currentUser = userRepository.findById(userId, 2).orElseThrow(
+                ()->new UserNotFoundException(userId)
+        );
         List<ActivityPhoto> activityPhotos = currentUser.getActivityPhotos();
         List<ActivityPhotoResp> activityPhotoResps = new ArrayList<>();
         for(ActivityPhoto activityPhoto: activityPhotos){
+//            Activity activity = activityRepository.findById(activityPhoto.getActivityId()).orElseThrow(
+//                    () -> new ActivityNotFoundException()
+//            );
+//            activityPhoto.setActivity(activity);
             activityPhotoResps.add(new ActivityPhotoResp(activityPhoto));
         }
+        activityPhotoResps.sort(new Comparator<ActivityPhotoResp>() {
+            @Override
+            public int compare(ActivityPhotoResp o1, ActivityPhotoResp o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         return activityPhotoResps;
     }
 

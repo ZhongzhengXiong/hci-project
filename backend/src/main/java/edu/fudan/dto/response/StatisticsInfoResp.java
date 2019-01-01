@@ -16,12 +16,11 @@ public class StatisticsInfoResp {
     private int createNum;
 
 
-    @NotNull
-    private HashMap<ActivityType, Integer> activityTypeStats;
+    private ActivityType mostFrequentType;
 
 
-    @NotNull
-    private Set<String> placeSet;
+    private String mostFrequentPlace;
+
 
     @NotNull
     private int reviewNum;
@@ -41,6 +40,14 @@ public class StatisticsInfoResp {
     public StatisticsInfoResp() {
     }
 
+    public ActivityType getMostFrequentType() {
+        return mostFrequentType;
+    }
+
+    public String getMostFrequentPlace() {
+        return mostFrequentPlace;
+    }
+
     public void setParticipateNum(int participateNum) {
         this.participateNum = participateNum;
     }
@@ -49,13 +56,16 @@ public class StatisticsInfoResp {
         this.createNum = createNum;
     }
 
-    public void setActivityTypeStats(HashMap<ActivityType, Integer> activityTypeStats) {
-        this.activityTypeStats = activityTypeStats;
+    public void setMostFrequentType(ActivityType mostFrequentType) {
+        this.mostFrequentType = mostFrequentType;
     }
 
-    public void setPlaceSet(Set<String> placeSet) {
-        this.placeSet = placeSet;
+    public void setMostFrequentPlace(String mostFrequentPlace) {
+        this.mostFrequentPlace = mostFrequentPlace;
     }
+
+
+
 
     public int getParticipateNum() {
         return participateNum;
@@ -65,13 +75,13 @@ public class StatisticsInfoResp {
         return createNum;
     }
 
-    public HashMap<ActivityType, Integer> getActivityTypeStats() {
-        return activityTypeStats;
-    }
-
-    public Set<String> getPlaceSet() {
-        return placeSet;
-    }
+//    public HashMap<ActivityType, Integer> getActivityTypeStats() {
+//        return activityTypeStats;
+//    }
+//
+//    public Set<String> getPlaceSet() {
+//        return placeSet;
+//    }
 
     public int getReviewNum() {
         return reviewNum;
