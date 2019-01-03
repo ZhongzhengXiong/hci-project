@@ -1,0 +1,38 @@
+<!--
+  Generated template for the NotifListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>notif-list</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)='doRefresh($event)'>     
+    <ion-refresher-content
+              pullingIcon="arrow-dropdown"        pullingText="下拉刷新"       refreshingSpinner="circles"     
+       refreshingText="...">   </ion-refresher-content></ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let notifItem of notifItems" (click)="doAlert(notifItem)">
+      <ion-avatar item-left>
+        <ion-icon name="notifications" item-start color="primary"></ion-icon>
+      </ion-avatar>
+      <p>时间: {{notifItem.date}}</p>
+      <p>活动: {{notifItem.activityName}}</p>
+      <p class="notif-content">内容: {{notifItem.content}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!--
+<ion-icon name="notifications" item-start color="danger" *ngIf="notifItem.type == 1"></ion-icon>
+<ion-icon name="wifi" item-start color="primary" *ngIf="notifItem.type == 2"></ion-icon>
+<ion-icon name="bluetooth" item-start color="primary" *ngIf="notifItem.type == 3"></ion-icon>
+-->

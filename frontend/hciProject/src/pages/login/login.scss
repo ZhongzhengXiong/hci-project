@@ -1,0 +1,215 @@
+page-login {
+
+  $login-container-height: 62vh;
+  $login-container-top: (100vh - $login-container-height) / 2;
+  $spinner-width: 7vw;
+  $login-container-width: 80vw;
+  $login-rectangle-height: 70%;
+  $login-rectangle-width: 16%;
+  $login-page-bg: gray;
+  $login-container-bg: white;
+  $login-rectangle-bg: black;
+  $login-input-bg: rgba(192, 192, 192, .2);
+  $login-error-text-color: red;
+  $login-reset-password-bottom: 5vh;
+
+  @keyframes login-expand-first-time {
+    0% {
+      height: 0
+    }
+    100% {
+      height: $login-container-height
+    }
+  }
+
+  @keyframes login-collapse {
+    0% {
+      height: $login-container-height;
+    }
+    50%, 100% {
+      height: 0;
+    }
+  }
+
+  @keyframes login-expand {
+    0%, 50% {
+      height: 0;
+    }
+    100% {
+      height: $login-container-height;
+    }
+  }
+
+  @mixin rotate-animation() {
+    0%, 100% {
+      transform: rotate(90deg)
+    }
+    50% {
+      transform: rotate(0deg)
+    }
+  }
+
+  @keyframes rotate-first-time {
+    0% {
+      transform: rotate(0deg)
+    }
+    100% {
+      transform: rotate(90deg)
+    }
+  }
+
+  @keyframes rotate-login {
+    @include rotate-animation
+  }
+
+  @keyframes rotate-register {
+    @include rotate-animation
+  }
+
+  .scroll-content {
+    background-color: $login-page-bg;
+  }
+
+  .login-container {
+    top: $login-container-top;
+    position: absolute;
+    left: 50%;
+
+    .spinner-wrapper {
+      position: absolute;
+      top: -$spinner-width / 2;
+
+      > div {
+        position: relative;
+        left: -50%;
+        width: $spinner-width;
+        height: $spinner-width;
+        background-color: $login-container-bg;
+        border: solid 1px black;
+        border-radius: $spinner-width / 2;
+        z-index: 400;
+
+        .spinner-rectangle {
+          width: $login-rectangle-width;
+          height: $login-rectangle-height;
+          margin: (100% - $login-rectangle-height) / 2 (100% - $login-rectangle-width) / 2;
+          background: $login-rectangle-bg;
+
+          &.login {
+            @include animation(rotate-login 1s 1 forwards)
+          }
+
+          &.register {
+            @include animation(rotate-register 1s 1 forwards)
+          }
+
+          &.first-time {
+            @include animation(rotate-first-time .5s 1 forwards)
+          }
+        }
+      }
+    }
+
+    .login-form-container {
+      overflow: scroll;
+      @include animation(login-expand 1s 1 forwards);
+      position: relative;
+      width: $login-container-width;
+      left: -50%;
+      background-color: $login-container-bg;
+      padding: 0 10px;
+
+      display: flex;
+
+      &.collapsed {
+        @include animation(login-collapse 1s 1 forwards);
+      }
+
+      &.first-time {
+        @include animation(login-expand-first-time .5s 1 forwards);
+
+        &.collapsed {
+          @include animation(none);
+          height: 0;
+        }
+      }
+
+      form {
+        margin: auto;
+      }
+    }
+  }
+
+  .item-input {
+    background-color: $login-input-bg;
+    margin: 5px 0;
+    width: auto;
+    padding-left: 0;
+
+    .label {
+      margin-left: 16px;
+      width: 10%;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: .8em;
+    }
+
+    &:first-of-type {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+
+  .button {
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+
+  .login-toggle-container {
+
+    >p {
+      text-align: center;
+      color: $login-error-text-color;
+      font-size: .8em;
+      min-height: 1.6em;
+      margin-bottom: 0;
+    }
+
+    .item {
+      min-height: 0;
+      height: 30px;
+      padding-left: 0;
+
+      .item-inner {
+        padding-right: 0;
+      }
+
+      .label {
+        font-size: .8em;
+      }
+
+      .checkbox {
+        margin-right: 18px !important;
+      }
+
+      &.login-toggle .label {
+        text-align: right;
+      }
+    }
+  }
+
+  .login-reset-password {
+    position: absolute;
+    width: 100%;
+    bottom: $login-reset-password-bottom;
+    text-align: center;
+
+    a {
+      color: white;
+    }
+  }
+}

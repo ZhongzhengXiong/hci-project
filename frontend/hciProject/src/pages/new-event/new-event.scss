@@ -1,0 +1,27 @@
+page-new-event {
+  .item-md {
+    padding-left: 0;
+  }
+
+  .label-md {
+    padding-left: 8px;
+  }
+
+  .new-event-description {
+    height: 150px;
+  }
+
+  .slide-from-above {
+    height: 65px;
+    transition: all 0.5s;
+  }
+
+  .slide-from-above.collapsed {
+    min-height: 0;
+    height: 0;
+  }
+}
+
+.picker-md .picker-opt {
+  font-size: 6vw;
+}

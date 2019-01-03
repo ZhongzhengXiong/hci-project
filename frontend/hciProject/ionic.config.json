@@ -1,0 +1,7 @@
+{
+  "name": "hciProject",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

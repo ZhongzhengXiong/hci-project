@@ -1,0 +1,15 @@
+page-picture {
+  .flow-item-image {
+    @include aspect-ratio-center
+  }
+
+  .flow-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flow-item {
+    flex: 0 0 48%;
+    margin: 10px 1%;
+  }
+}

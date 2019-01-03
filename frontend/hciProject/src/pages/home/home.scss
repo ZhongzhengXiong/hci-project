@@ -1,0 +1,26 @@
+page-home {
+  .slides-container, .flow-item-image {
+    @include aspect-ratio-center
+  }
+
+  .slides-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eeeeee80;
+    margin: 0;
+    padding: 10px;
+    text-align: start;
+  }
+
+  .flow-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flow-item {
+    flex: 0 0 48%;
+    margin: 10px 1%;
+  }
+}

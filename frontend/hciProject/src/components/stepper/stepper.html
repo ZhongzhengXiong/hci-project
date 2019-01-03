@@ -1,0 +1,15 @@
+<!-- Generated template for the StepperComponent component -->
+<div ion-grid>
+  <ion-row class="stepper-container">
+    <button ion-col class="stepper-button" ion-button [disabled]="!enabled || !isLegal(value - 1)" (click)="decrement()">
+      <ion-icon name="remove"></ion-icon>
+    </button>
+    <ion-input #inputBox ion-col type="number" [disabled]="!enabled" [value]="value"
+               class="stepper-input"
+               (input)="value = $event.target.value"
+               (ionBlur)="blur()"></ion-input>
+    <button ion-col class="stepper-button" ion-button [disabled]="!enabled || !isLegal(value + 1)" (click)="increment()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-row>
+</div>

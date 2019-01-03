@@ -1,0 +1,40 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)='doRefresh($event)'>     
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"        pullingText="下拉刷新"       refreshingSpinner="circles"     
+     refreshingText="...">   </ion-refresher-content></ion-refresher>
+
+
+  <ion-searchbar placeholder="搜索" color="primary" (ionInput)="input($event)" (ionClear)="clear($event)"></ion-searchbar>
+
+  <div class="flow-container">
+    <ion-card class="flow-item" *ngFor="let flowItem of flowItems | eventFilter: text"
+              (click)="goToEventDetail(flowItem.activityId)">
+      <div class="flow-item-image">
+        <div class="aspect-ratio-inner">
+          <div class="flexbox-center">
+            <img-loader src="{{this.currentUser.homeImageUrl}}{{flowItem.introPhotoName}}" useImg></img-loader>
+          </div>
+        </div>
+      </div>
+      <ion-card-content>
+        {{flowItem.name}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

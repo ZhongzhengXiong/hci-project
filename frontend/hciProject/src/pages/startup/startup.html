@@ -1,0 +1,3 @@
+<super-tabs tabsPlacement="bottom">
+  <super-tab *ngFor="let p of pages" [root]="p.component" [title]="p.title" icon="{{p.tabIcon}}"></super-tab>
+</super-tabs>
